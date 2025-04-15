@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 200">
+  <style>
+    .logo-text { fill: #ffffff; font-family: 'Arial Black', sans-serif; font-weight: 900; font-size: 80px; }
+    .logo-i { fill: #FF7D45; font-family: 'Arial Black', sans-serif; font-style: italic; font-weight: 900; font-size: 80px; }
+    .logo-dot { fill: #FFC045; }
+    .logo-tagline { fill: #FFC045; font-family: Arial, sans-serif; font-size: 24px; font-style: italic; }
+    .logo-registered { fill: #ffffff; font-family: Arial, sans-serif; font-size: 20px; }
+  </style>
+  <text x="50" y="100" class="logo-text">ELSEW<tspan class="logo-i" dx="5" dy="0">i</tspan>HERE</text>
+  <circle cx="381" cy="39" r="15" class="logo-dot" />
+  <text x="657.8" y="70" class="logo-registered">®</text>
+</svg> 
