@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ELSEWHERE - Live Another Life{% endblock %}</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans">
+    <header class="shadow-sm">
+        <div class="logo-container">
+            <object data="{{ url_for('static', filename='images/elsewhere-logo.svg') }}" type="image/svg+xml" class="logo">
+                <span class="text-4xl font-serif font-bold tracking-tight text-white">ELSEWHERE</span>
+            </object>
+        </div>
+        <p class="tagline text-xl">"Where would you be if you could be anywhere"</p>
+        <nav>
+            <div class="nav-links">
+                <a href="/" class="font-medium hover:text-yellow-400 transition-colors">Home</a>
+                <a href="#about" class="font-medium hover:text-yellow-400 transition-colors">About</a>
+                <a href="#contact" class="font-medium hover:text-yellow-400 transition-colors">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-serif font-bold mb-4">ELSEWHERE</h3>
+                    <p class="tagline">"Where would you be if you could be anywhere"</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/" class="text-gray-300 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#about" class="text-gray-300 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#destinations" class="text-gray-300 hover:text-white transition-colors">Destinations</a></li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Connect With Us</h3>
+                    <p class="text-gray-300 mb-2">Follow us on social media for updates and inspiration.</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">Instagram</a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">Twitter</a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">Facebook</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400">
+                <p>&copy; 2025 ELSEWHERE. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html> 

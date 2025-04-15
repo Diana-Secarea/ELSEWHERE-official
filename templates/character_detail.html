@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+
+{% block title %}{{ character.name }} | ELSEWHERE{% endblock %}
+
+{% block content %}
+<div class="min-h-screen">
+    <!-- Hero Section -->
+    <section class="py-16 {{ character.color }} relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-transparent"></div>
+        
+        <!-- Character hero image -->
+        {% if character.id == 'street-chef' %}
+        <div class="absolute inset-0 opacity-40">
+            <img src="{{ url_for('static', filename='images/create-chef.jpg') }}" alt="Street Chef in Bangkok" class="w-full h-full object-cover">
+        </div>
+        {% elif character.id == 'boho-barista' %}
+        <div class="absolute inset-0 opacity-40">
+            <img src="{{ url_for('static', filename='images/create-baristac.jpg') }}" alt="Boho Barista in Brasov" class="w-full h-full object-cover">
+        </div>
+        {% elif character.id == 'minimal-dj' %}
+        <div class="absolute inset-0 opacity-40">
+            <img src="{{ url_for('static', filename='images/create-dj.jpg') }}" alt="Minimal DJ in Bucharest" class="w-full h-full object-cover">
+        </div>
+        {% endif %}
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl">
+                <a href="/" class="inline-flex items-center text-white mb-8 hover:text-white/80 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+                    </svg>
+                    Back to all characters
+                </a>
+                <div class="absolute top-4 left-4 experience-tag">EXPERIENCE</div>
+                <h1 class="text-5xl font-bold text-white mb-4">
+                    {% if character.id == 'street-chef' %}
+                    Street Chef<br>Bangkok
+                    {% elif character.id == 'boho-barista' %}
+                    Boho Barista<br>Brașov
+                    {% elif character.id == 'minimal-dj' %}
+                    Minimal DJ<br>Bucharest
+                    {% endif %}
+                </h1>
+                <p class="text-2xl text-white/90 max-w-3xl">
+                    {% if character.id == 'minimal-dj' %}
+                    Experience Romania's thriving minimal techno scene in Bucharest's exclusive underground clubs.
+                    {% else %}
+                    {{ character.description }}
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Timeline -->
+    <section class="py-20 px-4">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-3xl font-serif font-bold mb-12 text-center">Your {{ character.location }} Experience</h2>
+            
+            <div class="space-y-12">
+                {% for activity in character.activities %}
+                <div class="flex">
+                    <div class="mr-8 relative">
+                        <div class="h-12 w-12 rounded-full {{ character.color }} flex items-center justify-center text-white font-bold text-xl">
+                            {{ loop.index }}
+                        </div>
+                        {% if not loop.last %}
+                        <div class="absolute top-12 bottom-0 left-1/2 transform -translate-x-1/2 w-1 {{ character.color }}"></div>
+                        {% endif %}
+                    </div>
+                    <div class="flex-1 pt-1">
+                        <h3 class="text-2xl font-medium mb-4">{{ activity }}</h3>
+                        <div class="bg-white rounded-xl shadow-md p-6">
+                            <p class="text-gray-600">
+                                <!-- In a real application, you'd include more detailed descriptions here -->
+                                Experience the authentic rhythm of {{ character.location }} life as you {{ activity.lower() }}. This carefully curated activity connects you with the local culture and lifestyle in a way most tourists never experience.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="py-16 px-4 bg-gray-100">
+        <div class="container mx-auto max-w-4xl">
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2 p-8 md:p-12">
+                        <h2 class="text-3xl font-serif font-bold mb-4">Book This Experience</h2>
+                        <p class="text-gray-600 mb-8">
+                            Become the {{ character.name.split(' in ')[0] if ' in ' in character.name else character.name }} for a weekend or a week. Prices start from $499.
+                        </p>
+                        
+                        <form class="space-y-6">
+                            <div>
+                                <label for="dates" class="block mb-2 font-medium">Select Dates</label>
+                                <input type="text" id="dates" placeholder="MM/DD/YYYY - MM/DD/YYYY" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                            </div>
+                            <div>
+                                <label for="guests" class="block mb-2 font-medium">Number of Travelers</label>
+                                <select id="guests" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                                    <option value="1">1 Person</option>
+                                    <option value="2">2 People</option>
+                                    <option value="3">3 People</option>
+                                    <option value="4">4 People</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="elsewhere-btn w-full">
+                                Check Availability
+                            </button>
+                        </form>
+                    </div>
+                    <div class="md:w-1/2 {{ character.color }} p-8 md:p-12 text-white">
+                        <h3 class="text-2xl font-bold mb-6">What's Included</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Curated experience with local hosts</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Boutique accommodation in {{ character.location }}</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Personalized itinerary of authentic activities</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Local transportation within the city</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>24/7 concierge support</span>
+                            </li>
+                            {% if character.id == 'minimal-dj' %}
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Guest list access to exclusive venues</span>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %} 

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Page Not Found | ELSEWHERE{% endblock %}
+
+{% block content %}
+<section class="py-24 px-4 text-center">
+    <div class="container mx-auto max-w-3xl">
+        <h1 class="text-6xl font-serif font-bold mb-6">404</h1>
+        <h2 class="text-3xl font-medium mb-8">You're in the wrong elsewhere</h2>
+        <p class="text-xl text-gray-600 mb-12">
+            The character or page you're looking for doesn't exist or has been moved to another destination.
+        </p>
+        <a href="/" class="inline-block px-8 py-4 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition-colors">
+            Return Home
+        </a>
+    </div>
+</section>
+{% endblock %} 

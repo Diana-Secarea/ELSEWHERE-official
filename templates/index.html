@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+
+{% block title %}ELSEWHERE - Where would you be if you could be anywhere{% endblock %}
+
+{% block content %}
+<section class="py-12 px-4 hero-section text-white">
+    <div class="container mx-auto max-w-6xl">
+        <div class="text-center mb-16">
+            <h1 class="text-5xl font-serif font-bold mb-6">Experience the TikTok Life App</h1>
+            <div class="mt-8">
+                <a href="#characters" class="elsewhere-btn">
+                    Now you Could be Anywhere?
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="characters" class="py-16 px-4 bg-white">
+    <div class="container mx-auto max-w-6xl">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            {% for character in characters %}
+            <div class="group character-card shadow-xl overflow-hidden">
+                <div class="flex flex-col h-full">
+                    <!-- Header with elsewhere text -->
+                    <div class="bg-gray-900 text-white py-3 px-6 flex justify-between items-center">
+                        <div class="text-xl font-medium">elsewhere</div>
+                        <div class="flex space-x-3">
+                            <span>≡</span>
+                        </div>
+                    </div>
+
+                    <!-- Character image container -->
+                    <div class="relative">
+                        {% if character.id == 'street-chef' %}
+                        <img src="{{ url_for('static', filename='images/create-chef.jpg') }}" alt="{{ character.name }}" class="w-full h-72 object-cover">
+                        {% elif character.id == 'boho-barista' %}
+                        <img src="{{ url_for('static', filename='images/create-baristac.jpg') }}" alt="{{ character.name }}" class="w-full h-72 object-cover">
+                        {% elif character.id == 'minimal-dj' %}
+                        <img src="{{ url_for('static', filename='images/create-dj.jpg') }}" alt="{{ character.name }}" class="w-full h-72 object-cover">
+                        {% endif %}
+                    </div>
+
+                    <!-- Character information in colored box -->
+                    <div class="p-6 {% if character.id == 'street-chef' %}bg-pink-500{% elif character.id == 'boho-barista' %}bg-blue-600{% elif character.id == 'minimal-dj' %}bg-gray-700{% endif %} text-white">
+                        <h3 class="text-3xl font-bold mb-3">
+                            {% if character.id == 'street-chef' %}
+                            Street Chef Bangkok
+                            {% elif character.id == 'boho-barista' %}
+                            Boho Barista Brașov
+                            {% elif character.id == 'minimal-dj' %}
+                            Minimal DJ Bucharest
+                            {% endif %}
+                        </h3>
+                        <p class="text-sm opacity-90 leading-relaxed">
+                            {% if character.id == 'street-chef' %}
+                            4 AM wet market shopping in a hidden alley<br>
+                            Cooking with local ingredients<br>
+                            Hammock nap above your stall<br>
+                            Midnight boat ride with fellow chefs
+                            {% elif character.id == 'boho-barista' %}
+                            Morning meditation in mountain mist<br>
+                            Craft coffee brewing with local beans<br>
+                            Afternoon poetry readings with locals<br>
+                            Evening acoustic music in hidden cafes
+                            {% elif character.id == 'minimal-dj' %}
+                            Vinyl hunting in record stores<br>
+                            Sound check at underground clubs<br>
+                            DJ set at warehouse parties<br>
+                            Sunrise afterparty on rooftops
+                            {% endif %}
+                        </p>
+                        <a href="{{ url_for('character_detail', character_id=character.id) }}" class="inline-block mt-6 px-10 py-2 bg-white text-gray-900 font-medium rounded-full hover:bg-gray-100 transition-colors text-sm">
+                            DISCOVER MORE
+                        </a>
+                    </div>
+                    
+                    <!-- Additional activity previews -->
+                    <div class="bg-white p-6">
+                        <div class="mb-4">
+                            <h4 class="text-xl font-bold mb-1">
+                                {% if character.id == 'street-chef' %}
+                                Morning Café journaling
+                                {% elif character.id == 'boho-barista' %}
+                                Mountain Meditation
+                                {% elif character.id == 'minimal-dj' %}
+                                Underground Club Scene
+                                {% endif %}
+                            </h4>
+                            <p class="text-sm text-gray-600">
+                                {% if character.id == 'street-chef' %}
+                                Wake early to shop at local markets and prepare authentic dishes with hidden techniques
+                                {% elif character.id == 'boho-barista' %}
+                                Begin your day with breathtaking views and stillness in the Carpathian mountains
+                                {% elif character.id == 'minimal-dj' %}
+                                Explore Bucharest's underground minimal techno scene
+                                {% endif %}
+                            </p>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-2 mt-4">
+                            <div class="bg-gray-100 p-3 text-center rounded">
+                                {% if character.id == 'street-chef' %}
+                                <h5 class="uppercase text-xs font-bold text-gray-700 mb-1">COOKING</h5>
+                                <p class="text-xs">WET MARKET<br>WITH HIDDEN<br>ALLEY</p>
+                                {% elif character.id == 'boho-barista' %}
+                                <h5 class="uppercase text-xs font-bold text-gray-700 mb-1">JOURNALING</h5>
+                                <p class="text-xs">MOUNTAIN<br>INSPIRATION<br>SESSIONS</p>
+                                {% elif character.id == 'minimal-dj' %}
+                                <h5 class="uppercase text-xs font-bold text-gray-700 mb-1">VINYL</h5>
+                                <p class="text-xs">RECORD<br>STORE<br>HUNTING</p>
+                                {% endif %}
+                            </div>
+                            <div class="bg-gray-100 p-3 text-center rounded">
+                                {% if character.id == 'street-chef' %}
+                                <h5 class="uppercase text-xs font-bold text-gray-700 mb-1">COOKING</h5>
+                                <p class="text-xs">STREET FOOD<br>JOURNAL<br>OCTOBER</p>
+                                {% elif character.id == 'boho-barista' %}
+                                <h5 class="uppercase text-xs font-bold text-gray-700 mb-1">COFFEE</h5>
+                                <p class="text-xs">COFFEE<br>TASTING<br>WORKSHOP</p>
+                                {% elif character.id == 'minimal-dj' %}
+                                <h5 class="uppercase text-xs font-bold text-gray-700 mb-1">MIXING</h5>
+                                <p class="text-xs">WAREHOUSE<br>PARTY<br>EXPERIENCE</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="py-16 px-4 bg-white" id="about">
+    <div class="container mx-auto max-w-4xl">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-serif font-bold mb-4">About Elsewhere</h2>
+            <p class="text-xl text-gray-600">
+                A new way to experience the world's most interesting cities.
+            </p>
+        </div>
+        
+        <div class="bg-white rounded-xl shadow-lg p-8 md:p-12">
+            <p class="text-lg mb-6">
+                At Elsewhere, we believe travel should be more than just visiting places – it should be about living different lives. Our curated character experiences let you step into lifestyles you've always been curious about.
+            </p>
+            <p class="text-lg mb-6">
+                Each "Elsewhere" character is carefully crafted by locals and experts to give you an authentic immersion into a way of life. From cooking in Bangkok's hidden alleys to surfing at sunrise in Lisbon, these experiences go beyond typical tourism.
+            </p>
+            <p class="text-lg">
+                Choose a character that speaks to you, and for a weekend or week, live as if you were truly elsewhere.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 px-4" id="contact">
+    <div class="container mx-auto max-w-4xl">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-serif font-bold mb-4">Contact Us</h2>
+            <p class="text-xl text-gray-600">
+                Ready to become someone else for a while? We're here to help.
+            </p>
+        </div>
+        
+        <div class="bg-white rounded-xl shadow-lg p-8 md:p-12">
+            <form class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="name" class="block mb-2 font-medium">Name</label>
+                        <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label for="email" class="block mb-2 font-medium">Email</label>
+                        <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                    </div>
+                </div>
+                <div>
+                    <label for="message" class="block mb-2 font-medium">Message</label>
+                    <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"></textarea>
+                </div>
+                <div>
+                    <button type="submit" class="elsewhere-btn">
+                        Send Message
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %} 
