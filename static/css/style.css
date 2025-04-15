@@ -1,0 +1,230 @@
+/* Custom styles for ELSEWHERE website */
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom focus styles */
+*:focus {
+    outline: none;
+}
+
+/* Header styling with brand colors */
+header {
+    background-color: #630749 !important; /* Purple background - do not change */
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+header .logo-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+
+header .logo {
+    height: 120px;
+    width: auto;
+    margin: 0 auto;
+}
+
+header nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+header .nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+header a, header .font-medium {
+    color: white !important;
+}
+
+/* Tagline styling */
+.tagline {
+    color: #FF7D45 !important; /* Match the orange color of the 'i' in logo */
+    font-style: italic;
+    font-weight: 500;
+    margin-top: -55px; /* Increased negative margin to move the tagline more upward */
+    margin-bottom: 20px;
+}
+
+/* Hero section background */
+.hero-section {
+    background-color: #630749 !important;
+    background-image: radial-gradient(circle at 70% 60%, #630749 10%, #630749 60%);
+    padding-top: 2rem;
+}
+
+/* Character card styling */
+.character-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 0;
+    overflow: hidden;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.character-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Card header styling */
+.card-header {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 0.75rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Activity tiles styling */
+.activity-tile {
+    background-color: #f4f4f4;
+    padding: 0.75rem;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.activity-tile h5 {
+    color: #333;
+    font-size: 0.7rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.activity-tile p {
+    font-size: 0.65rem;
+    line-height: 1.2;
+    color: #555;
+}
+
+/* Button styling */
+.discover-btn {
+    background-color: white;
+    color: #333;
+    font-weight: 600;
+    font-size: 0.8rem;
+    padding: 0.5rem 2rem;
+    border-radius: 999px;
+    display: inline-block;
+    transition: all 0.2s;
+}
+
+.discover-btn:hover {
+    background-color: #f4f4f4;
+}
+
+/* Experience card colors */
+.chef-card {
+    background-color: #e84a5f;
+}
+
+.barista-card {
+    background-color: #2e86de;
+}
+
+.dj-card {
+    background-color: #2d3436;
+}
+
+/* Timeline connector styles */
+.timeline-connector {
+    position: absolute;
+    left: 50%;
+    top: 24px;
+    bottom: 0;
+    width: 2px;
+    transform: translateX(-50%);
+}
+
+/* Button hover animation */
+.btn-hover-expand {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-hover-expand::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: height 0.3s ease;
+    z-index: -1;
+}
+
+.btn-hover-expand:hover::after {
+    height: 100%;
+}
+
+/* Elsewhere button styling */
+.elsewhere-btn {
+    background-color: #FFC045;
+    color: #4B0B64;
+    font-weight: bold;
+    border-radius: 999px;
+    padding: 0.75rem 2rem;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.elsewhere-btn:hover {
+    background-color: #FFD045;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Responsive font sizing */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem !important;
+    }
+    
+    h2 {
+        font-size: 2rem !important;
+    }
+    
+    h3 {
+        font-size: 1.5rem !important;
+    }
+    
+    p {
+        font-size: 1rem !important;
+    }
+
+    header .logo {
+        height: 90px;
+    }
+    
+    .character-card {
+        max-width: 360px;
+        margin: 0 auto 2rem auto;
+    }
+}
+
+/* Fallback image styles */
+.image-fallback {
+    background-color: #f3f4f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9ca3af;
+}
+
+/* Custom form input focus styles */
+input:focus, select:focus, textarea:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+} 
